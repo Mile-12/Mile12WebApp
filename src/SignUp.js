@@ -12,7 +12,8 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
+import axios from "axios";
+import {useState} from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,8 +50,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SignUp({ loggedIn, logout, login }) {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [mobile, setPhone] = useState('')
   const classes = useStyles();
+  const onSubmitClick = (e)=>{
+    e.preventDefault()
+    console.log("Registering")
+    let body = {
+      'username': username,
+      "mobile": mobile,
+      'password': password
+    }
+    console.log(body)
+    axios.post('https://mile12db.azurewebsites.net/api/auth/signup',body ).then(response => {
+    let id = response.data.id  
+    if (id){ 
+        console.log(id +"Created")          
+      }
+      else {
+        console.log("Signup failes")
+      }
+      })
+  }
 
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value)
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -70,26 +103,17 @@ export function SignUp({ loggedIn, logout, login }) {
               Sign Up
             </Typography>
             <form className={classes.form} noValidate>
-              <TextField
+            <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="phonenumber"
-                label="Phone Number"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-                <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Phone Number"
-                name="email"
-                autoComplete="email"
+                id="mobile"
+                label="Phone number"
+                name="mobile"
+                onChange = {handlePhoneChange}
+                value={mobile}
+                autoComplete="mobile"
                 autoFocus
               />
                 <TextField
@@ -98,8 +122,10 @@ export function SignUp({ loggedIn, logout, login }) {
                 required
                 fullWidth
                 id="name"
-                label="Name"
+                label="User Name"
                 name="name"
+                onChange = {handleUsernameChange}
+                value={username}
                 autoComplete="name"
                 autoFocus
               />
@@ -112,6 +138,8 @@ export function SignUp({ loggedIn, logout, login }) {
                 label="Password"
                 type="password"
                 id="password"
+                onChange = {handlePasswordChange}
+                value ={password}
                 autoComplete="current-password"
               />
               <Button
@@ -119,6 +147,7 @@ export function SignUp({ loggedIn, logout, login }) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                onClick={onSubmitClick}
                 href="/login"
               >
                 Sign Up

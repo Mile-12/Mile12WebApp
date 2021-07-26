@@ -17,6 +17,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { configureStore } from "@reduxjs/toolkit";
 import peopleReducer from "./ReduxTable/peopleSlice";
 import { Provider } from "react-redux";
+import { User } from "./users/index";
 
 export default function App() {
   const store = configureStore({
@@ -58,6 +59,9 @@ export default function App() {
                     <Route path="/Recommendations">
                       <Dashboard2 />
                     </Route>
+                    <Route path="/User">
+                      <User />
+                      </Route>
                     <Route path="/signIn">
                       <SignIn />
                     </Route>

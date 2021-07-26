@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.21.1",
     "date-fns": "^2.12.0",
     "google-maps-react": "^2.0.2",
     "highcharts": "^8.0.0",
@@ -22,6 +23,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "react-token-auth": "^1.1.8",
     "recharts": "^2.0.0-beta.1",
     "styled-components": "^5.2.0"
   },
