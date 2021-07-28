@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,7 +13,10 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import {login, logout, useAuth} from "./auth"
+import axios from "axios";
 
+// function to get username password from the form
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,9 +52,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function SignIn({ loggedIn, logout, login }) {
+export function SignIn() {
   const classes = useStyles();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [remember, setRemember] = useState(false)
+  const onSubmitClick = (e)=>{
+    e.preventDefault()
+    console.log("You pressed login")
+    let body = {
+      'username': username,
+      'password': password
+    }
+    console.log(body)
+    axios.post('https://mile12db.azurewebsites.net/api/auth/login',body ).then(response => {
+      if (response.data.token){
+        let key = response.data
+        console.log("token")          
+        console.log(key.token)
+        login(key)          
+      }
+      else {
+        console.log("Please type in correct username/password")
+      }
+  })
+  }
 
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+  const [logged] = useAuth();
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -79,8 +114,10 @@ export function SignIn({ loggedIn, logout, login }) {
                 required
                 fullWidth
                 id="email"
-                label="Phone Number"
+                label="User Name"
                 name="email"
+                onChange = {handleUsernameChange}
+                value={username}
                 autoComplete="email"
                 autoFocus
               />
@@ -93,6 +130,8 @@ export function SignIn({ loggedIn, logout, login }) {
                 label="Password"
                 type="password"
                 id="password"
+                onChange = {handlePasswordChange}
+                value ={password}
                 autoComplete="current-password"
               />
               <FormControlLabel
@@ -104,6 +143,7 @@ export function SignIn({ loggedIn, logout, login }) {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
+                onClick={onSubmitClick}
                 href="/home"
               >
                 Sign In

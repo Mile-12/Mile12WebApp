@@ -19,6 +19,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import peopleReducer from "./ReduxTable/peopleSlice";
 import productsReducer from "./ReduxTable/productsSlice";
 import { Provider } from "react-redux";
+import { User } from "./users/index";
 
 export default function App() {
   
@@ -62,6 +63,9 @@ export default function App() {
                     <Route path="/Recommendations">
                       <Dashboard2 />
                     </Route>
+                    <Route path="/User">
+                      <User />
+                      </Route>
                     <Route path="/signIn">
                       <SignIn />
                     </Route>
