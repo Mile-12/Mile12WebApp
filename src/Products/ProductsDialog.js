@@ -5,11 +5,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { add, update } from "../ReduxTable/peopleSlice";
+import { add, update } from "../ReduxTable/productsSlice";
 import { useDispatch } from "react-redux";
-import { nextID } from "../ReduxTable/peopleSlice";
+import { nextID } from "../ReduxTable/productsSlice";
 
-export default function PeopleDialog({ data, render, onSave }) {
+export default function ProductsDialog({ data, render, onSave }) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -19,14 +19,17 @@ export default function PeopleDialog({ data, render, onSave }) {
   const id = data && data.id;
 
   const [img, setImg] = React.useState(defaultImg);
-  const [name, setName] = React.useState(defaultName);
-  const [phoneNumber, setPhoneNumber] = React.useState(defaultName);
-  const [tag, setTag] = React.useState(defaultName);
+  const [productname, setProductName] = React.useState(defaultName);
+  const [totalquantity, setTotalQuantity] = React.useState(defaultName);
+  const [amount, setAmount] = React.useState(defaultName);
+  const [subquantity, setSubQuantity] = React.useState(defaultName);
 
   const handleClickOpen = () => {
     setOpen(true);
-    setPhoneNumber(defaultName)
-    setName(defaultName);
+    setTotalQuantity(defaultName)
+    setProductName(defaultName);
+    setAmount(defaultName);
+    setSubQuantity(defaultName);
     setImg(defaultImg);
   };
 
@@ -36,7 +39,7 @@ export default function PeopleDialog({ data, render, onSave }) {
 
   const handleSave = () => {
     const action = data ? update : add;
-    dispatch(action({ name, id: id || nextID(), img, phoneNumber, tag }));
+    dispatch(action({ productname, id: id || nextID(), img, totalquantity, amount, subquantity }));
     onSave && onSave();
     handleClose();
   };
@@ -50,38 +53,48 @@ export default function PeopleDialog({ data, render, onSave }) {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">
-          {data ? "Edit" : "Add"} Member{" "}
+          {data ? "Edit" : "Add"} New Product{" "}
         </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Name"
+            id="productname"
+            label="Product"
             fullWidth
-            value={name}
+            value={productname}
             onChange={(e) => {
-              setName(e.target.value);
+              setProductName(e.target.value);
             }}
           />
           <TextField
             autoFocus
             margin="dense"
-            label="Phone Number"
+            label="Total Quantity"
             fullWidth
-            value={phoneNumber}
+            value={totalquantity}
             onChange={(e) => {
-              setPhoneNumber(e.target.value);
+              setTotalQuantity(e.target.value);
             }}
           />
           <TextField
             autoFocus
             margin="dense"
-            label="Type of Member"
+            label="Amount"
             fullWidth
-            value={tag}
+            value={amount}
             onChange={(e) => {
-              setTag(e.target.value);
+              setAmount(e.target.value);
+            }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Sub Quantity"
+            fullWidth
+            value={subquantity}
+            onChange={(e) => {
+              setSubQuantity(e.target.value);
             }}
           />
         </DialogContent>

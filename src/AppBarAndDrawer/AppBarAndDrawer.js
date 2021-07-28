@@ -1,22 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
+import { amber, red } from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
+import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MenuIcon from "@material-ui/icons/Menu";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import MenuIcon from "@material-ui/icons/Menu";
+import PropTypes from "prop-types";
+import React from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import Icon from "@material-ui/core/Icon";
-import { amber, red } from "@material-ui/core/colors";
 export const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
@@ -84,6 +84,7 @@ function ResponsiveDrawer(props) {
           { text: "home", icon: "dashboard" },
           { text: "members", icon: "people" },
           { text: "Recommendations", icon: "map" },
+          { text: "Products", icon: "map" },
         ].map(({ text, icon }, index) => (
           <ListItem
             component={RouterLink}
