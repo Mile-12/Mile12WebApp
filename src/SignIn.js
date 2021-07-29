@@ -15,7 +15,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import {login, logout, useAuth} from "./auth"
 import axios from "axios";
-
+import { Route } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 // function to get username password from the form
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SignIn() {
+  let history = useHistory();
   const classes = useStyles();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -75,7 +77,11 @@ export function SignIn() {
       else {
         console.log("Please type in correct username/password")
       }
+      // redirect to home
+      history.push('/home')
+
   })
+
   }
 
   const handleUsernameChange = (e) => {
@@ -143,8 +149,9 @@ export function SignIn() {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={onSubmitClick}
                 href="/home"
+                onClick={onSubmitClick}
+                
               >
                 Sign In
               </Button>

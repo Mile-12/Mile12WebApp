@@ -9,7 +9,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useTheme } from "./theme";
 import { DataProvider } from "./Providers/DataProvider";
 import People from "./ReduxTable/people";
-import Products from "./ReduxTable/products";
 import Driver from "./Members/Driver";
 import Components from "./Components/Components";
 import Settings from "./Settings/Settings";
@@ -17,18 +16,15 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { configureStore } from "@reduxjs/toolkit";
 import peopleReducer from "./ReduxTable/peopleSlice";
-import productsReducer from "./ReduxTable/productsSlice";
 import { Provider } from "react-redux";
 import { User } from "./users/index";
 
 export default function App() {
-  
   const store = configureStore({
     reducer: {
-      people: peopleReducer, products: productsReducer
+      people: peopleReducer,
     },
   });
-
   const [currentTheme, setCurrentTheme] = useTheme();
   return (
     <>
@@ -71,9 +67,6 @@ export default function App() {
                     </Route>
                     <Route path="/signUp">
                       <SignUp />
-                    </Route>
-                    <Route exact path="/products">
-                      <Products />
                     </Route>
                   </Switch>
                 </div>

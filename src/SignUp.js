@@ -14,6 +14,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import {useState} from "react";
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SignUp({ loggedIn, logout, login }) {
+  let history = useHistory();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [mobile, setPhone] = useState('')
@@ -72,6 +75,8 @@ export function SignUp({ loggedIn, logout, login }) {
         console.log("Signup failes")
       }
       })
+      history.push('/login')
+
   }
 
   const handleUsernameChange = (e) => {
