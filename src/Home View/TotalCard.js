@@ -7,6 +7,7 @@ import Title from "./Title";
 import { currentDay } from "../Providers/DataProvider";
 import { format } from "date-fns";
 import SimpleModal from "./Modal";
+import {getAmount} from "./ExpensesTable";
 
 
 function preventDefault(event) {
@@ -58,7 +59,7 @@ export default function Deposits() {
       <div className={classes.balance}>
         <div className={classes.balanceItem}>
           <Typography component="p" variant="h3">
-            ${total.toLocaleString()}
+            ${getAmount()}
           </Typography>
           <Typography color="textSecondary" className={classes.depositContext}>
             {format(currentDay.valueOf(), "MMMM do, y")}

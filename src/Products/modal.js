@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import Button from "@material-ui/core/Button";
 import moment from "moment";
 import axios from "axios";
+import AddIcon from "@material-ui/icons/Add";
+import { authFetch } from '../auth';
 
 const currentDay = moment();
 function rand() {
@@ -23,10 +25,10 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
-    width: 400,
+    position: 'relative',
+    width: 500,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: '1px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -38,23 +40,25 @@ export default function SimpleModal() {
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [product, setProduct] = useState('');
-  const [location, setLocation] = useState('');
-  const [amount, setAmount] = useState('');
+  const [description, setDesc] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
 
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   const onSubmit = (e) =>{
     handleClose()
     //e.preventDefault()
     let body = {
-      'Date' : currentDay,
-      'Location' : location,
-      'ProductName' : product,
-      'Amount' : amount  
+      'Name' : product,
+      'Description' : description,
+      'Price' : price,
+      'Quantity' : quantity
     }
-    axios.post("https://mile12db.azurewebsites.net/api/expenses/C-1" , body).then(response => {
+    const requestOption = {method: "POST", body: body}
+    authFetch("https://mile12db.azurewebsites.net/api/products/C-1" , requestOption).then(response => {
       return response
     }).then(response => {
       console.log(response)
@@ -71,11 +75,14 @@ export default function SimpleModal() {
   const handleProduct = (e) => {
     setProduct(e.target.value)
   };
-  const handleLocation = (e) => {
-    setLocation(e.target.value)
+  const handleDesc = (e) => {
+    setDesc(e.target.value)
   };
-  const handleAmount= (e) => {
-    setAmount(e.target.value)
+  const handleQuantity= (e) => {
+    setQuantity(e.target.value)
+  };
+  const handlePrice= (e) => {
+    setPrice(e.target.value)
   };
 
   const body = (
@@ -89,17 +96,24 @@ export default function SimpleModal() {
           type="text"></input>
           <br/>
 
-          <label>Location </label>
+          <label>Description of product (optional)</label>
           <br/>
           <input 
-          onChange = {handleLocation}
+          onChange = {handleDesc}
           type="text"></input>
           <br/>
 
-          <label>Amount</label>
+          <label>Price</label>
           <br/>
           <input 
-          onChange = {handleAmount}
+          onChange = {handlePrice}
+          type="text"></input>
+          <br/>
+
+          <label>Quantity Available</label>
+          <br/>
+          <input 
+          onChange = {handleQuantity}
           type="text"></input> 
           <br/> <br/>
 
@@ -116,15 +130,16 @@ export default function SimpleModal() {
   );
 
   return (
-    <div>
-      <Button 
+    <div align ="right">
+        <Button
         edge="end"
-        variant="outlined"
         color="primary"
-        type="button" 
-        onClick={handleOpen}>
-        Add Expense
-      </Button>
+        variant="contained"
+        startIcon={<AddIcon />}
+        onClick={handleOpen}
+        >
+        Add a Product
+        </Button>
       
       <Modal
         open={open}

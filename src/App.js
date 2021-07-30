@@ -9,6 +9,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useTheme } from "./theme";
 import { DataProvider } from "./Providers/DataProvider";
 import People from "./ReduxTable/people";
+import Products from "./Products/products.js";
 import Driver from "./Members/Driver";
 import Components from "./Components/Components";
 import Settings from "./Settings/Settings";
@@ -67,6 +68,9 @@ export default function App() {
                     </Route>
                     <Route path="/signUp">
                       <SignUp />
+                    </Route>
+                    <Route path="/products">
+                      <Products />
                     </Route>
                   </Switch>
                 </div>
