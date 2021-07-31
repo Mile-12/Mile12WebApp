@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     height: 300,
   },
   balanceCard: {
-    height: 200,
+    height: 270,
   },
   addexpense: {
     
@@ -77,6 +77,7 @@ export function Dashboard() {
             <Paper className={balancePaper}>
             <Grid className = {addexpense}>
               <TotalCard />
+              <br /><br /><br />
               <SimpleModal />
               </Grid>
             </Paper>

@@ -46,7 +46,7 @@ export default function ExpensesTable() {
   
         }
       )
-    }, [])
+    }, []) 
 
   const classes = useStyles();
   return (

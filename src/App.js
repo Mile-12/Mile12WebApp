@@ -15,9 +15,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import peopleReducer from "./ReduxTable/peopleSlice";
 import { Provider } from "react-redux";
 import { User } from "./users/index";
-import {x} from "./SignIn"
-
-
+import { Welcome } from "./welcome";
+import { Landing } from "./landing";
+import { Name } from "./nameacoop";
 export default function App() {
   const store = configureStore({
     reducer: {
@@ -68,6 +68,15 @@ export default function App() {
                     </Route>
                     <Route path="/products">
                       <Products />
+                    </Route>
+                    <Route path="/welcome">
+                      <Welcome />
+                    </Route>
+                    <Route path="/landing">
+                      <Landing />
+                    </Route>
+                    <Route path="/name">
+                      <Name />
                     </Route>
                   </Switch>
                 </div>

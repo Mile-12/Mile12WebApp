@@ -75,14 +75,14 @@ export function Dashboard2() {
           </Grid>
           {/* Recent TotalCard */}
           {/* Chart */}
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid item xs={12} md={5} lg={8}>
             <Paper className={fixedHeightPaper}>
-              <ExpensesTable />
+              <Tools />
             </Paper>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
             <Paper className={fixedHeightPaper}>
-              <Tools />
+              <ExpensesTable />
             </Paper>
           </Grid>
           <Grid item xs={12}>

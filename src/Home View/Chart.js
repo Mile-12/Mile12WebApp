@@ -3,6 +3,8 @@ import { useTheme } from "@material-ui/core/styles";
 import { DataContext } from "../Providers/DataProvider";
 import moment from "moment";
 import Title from "./Title";
+import { deposits } from "./TotalCard";
+import { withdrawls } from "./TotalCard";
 
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
@@ -41,6 +43,7 @@ function useOptions(theme, data, secondData) {
 }
 
 export default function Chart() {
+  console.log(deposits)
   const theme = useTheme();
   const { data } = useContext(DataContext);
   const chartData = Object.values(data)
