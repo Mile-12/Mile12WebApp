@@ -7,7 +7,7 @@ import Title from "./Title";
 import { currentDay } from "../Providers/DataProvider";
 import { format } from "date-fns";
 import SimpleModal from "./Modal";
-import {getAmount} from "./ExpensesTable";
+import {Amount} from "./ExpensesTable";
 
 
 function preventDefault(event) {
@@ -51,7 +51,6 @@ export default function Deposits() {
     <React.Fragment className = {classes.paper}>
       <div className={classes.toolbar}>
         <Title>Balance</Title>
-        <SimpleModal />
        
       <div>
     </div>
@@ -59,7 +58,7 @@ export default function Deposits() {
       <div className={classes.balance}>
         <div className={classes.balanceItem}>
           <Typography component="p" variant="h3">
-            ${getAmount()}
+            ${Amount}
           </Typography>
           <Typography color="textSecondary" className={classes.depositContext}>
             {format(currentDay.valueOf(), "MMMM do, y")}

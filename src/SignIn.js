@@ -52,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
+let x = 0
+export{x}
 export function SignIn() {
   let history = useHistory();
   const classes = useStyles();
@@ -61,6 +62,7 @@ export function SignIn() {
   const [remember, setRemember] = useState(false)
   const onSubmitClick = (e)=>{
     e.preventDefault()
+    x += 1
     console.log("You pressed login")
     let body = {
       'username': username,
@@ -176,3 +178,4 @@ export function SignIn() {
     </Grid>
   );
 }
+

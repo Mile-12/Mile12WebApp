@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import SimpleModal from './modal';
+import Grid from '@material-ui/core/Grid';
 
 
 const api = axios.create({
@@ -68,9 +69,12 @@ export default function Products() {
   const classes = useStyles();
   return (
     <React.Fragment>
-    <div className={classes.seeMore}>
+    <Grid container spacing = {0}>
       <h1>Available Products</h1>
-      <SimpleModal align="right" />
+    <Grid item xs={12} md={7} lg={11}>
+      <SimpleModal />
+      </Grid>
+      <Grid item xs={8} md={7} lg={11}>
       {values.map(row => (
     <div className={classes.root2}>
         <Card className={classes.root} variant="outlined">
@@ -96,9 +100,11 @@ export default function Products() {
         </Card>
     </div>
           ))}
+        </Grid>
 
 
-      </div>
+
+      </Grid>
     </React.Fragment>
   );
 }

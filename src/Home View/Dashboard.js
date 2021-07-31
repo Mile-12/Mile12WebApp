@@ -10,6 +10,8 @@ import { drawerWidth } from "../AppBarAndDrawer/AppBarAndDrawer";
 import { makeStyles } from "@material-ui/core/styles";
 import Content from "./Content";
 import Tools from "./Tools";
+import SimpleModal from "./Modal";
+import { red } from "kleur";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -56,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
   balanceCard: {
     height: 200,
   },
+  addexpense: {
+    
+  },
 }));
 
 
@@ -63,13 +68,17 @@ export function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const balancePaper = clsx(classes.paper, classes.balanceCard);
+  const addexpense = clsx(classes.paper, classes.addexpense);
   return (
     <>
       <Content>
         <Grid container spacing={3}>
           <Grid item xs={12} md={7} lg={12}>
             <Paper className={balancePaper}>
+            <Grid className = {addexpense}>
               <TotalCard />
+              <SimpleModal />
+              </Grid>
             </Paper>
           </Grid>
           {/* Recent TotalCard */}

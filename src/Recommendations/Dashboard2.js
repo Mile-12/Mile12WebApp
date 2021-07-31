@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import TotalCard from "./TotalCard";
+import TotalCard from "../Home View/TotalCard";
 import ExpensesTable from "./ExpensesTable";
 import { drawerWidth } from "../AppBarAndDrawer/AppBarAndDrawer";
 import { makeStyles } from "@material-ui/core/styles";

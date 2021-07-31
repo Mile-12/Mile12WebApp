@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import moment from "moment";
 import axios from "axios";
 
-const currentDay = moment();
+const currentDay = moment().format("YYYY-MM-DD");
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }

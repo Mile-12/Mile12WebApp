@@ -80,7 +80,6 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {[
-          { text: "login", icon: "lock" },
           { text: "home", icon: "dashboard" },
           { text: "members", icon: "people" },
           { text: "Recommendations", icon: "map" },

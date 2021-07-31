@@ -17,7 +17,7 @@ const api = axios.create({
   baseURL: ``
 })
 
-var Amount = 0
+export var Amount = 0
 
 export function getAmount() {
   return(Amount)

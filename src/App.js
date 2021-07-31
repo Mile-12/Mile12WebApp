@@ -9,16 +9,14 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { useTheme } from "./theme";
 import { DataProvider } from "./Providers/DataProvider";
 import People from "./ReduxTable/people";
-import Products from "./Products/products.js";
+import Products from "./Products/products";
 import Driver from "./Members/Driver";
-import Components from "./Components/Components";
-import Settings from "./Settings/Settings";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 import { configureStore } from "@reduxjs/toolkit";
 import peopleReducer from "./ReduxTable/peopleSlice";
 import { Provider } from "react-redux";
 import { User } from "./users/index";
+import {x} from "./SignIn"
+
 
 export default function App() {
   const store = configureStore({
@@ -29,12 +27,14 @@ export default function App() {
   const [currentTheme, setCurrentTheme] = useTheme();
   return (
     <>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <ThemeProvider theme={currentTheme}>
           <Provider store={store}>
             <DataProvider>
               <Router>
                 <div>
+                <Route path="/login">
+                      <SignIn />
+                    </Route>
                   <AppBarAndDrawer
                     currentTheme={currentTheme}
                     setCurrentTheme={setCurrentTheme}
@@ -42,9 +42,6 @@ export default function App() {
                   {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                   <Switch>
-                    <Route path="/login">
-                      <SignIn />
-                    </Route>
                     <Route path="/profile">
                       <Driver id={1} />
                     </Route>
@@ -78,7 +75,7 @@ export default function App() {
             </DataProvider>
           </Provider>
         </ThemeProvider>
-      </MuiPickersUtilsProvider>
+
     </>
   );
 }
