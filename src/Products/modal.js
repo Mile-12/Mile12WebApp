@@ -26,7 +26,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'relative',
-    width: 500,
+    width: 280,
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #000',
     boxShadow: theme.shadows[5],
@@ -48,24 +48,50 @@ export default function SimpleModal() {
     setOpen(false);
   };
   
-  const onSubmit = (e) =>{
-    handleClose()
-    //e.preventDefault()
-    let body = {
-      'Name' : product,
-      'Description' : description,
-      'Price' : price,
-      'Quantity' : quantity
-    }
-    const requestOption = {method: "POST", body: body}
-    authFetch("https://mile12db.azurewebsites.net/api/products/C-1" , requestOption).then(response => {
-      return response
-    }).then(response => {
-      console.log(response)
+  // const onSubmit = (e) =>{
+  //   handleClose()
+  //   //e.preventDefault()
+  //   let body = {
+  //     'Name' : product,
+  //     'Description' : description,
+  //     'Price' : price,
+  //     'Quantity' : quantity
+  //   }
+  //   const requestOption = {method: "POST", body: body}
+  //   authFetch("https://mile12db.azurewebsites.net/api/products/C-1" , requestOption).then(response => {
+  //     return response
+  //   }).then(response => {
+  //     console.log(response)
       
-    })
-  }
+  //   })
+  // }
+  const onSubmit = (e) =>{
+    {
+      console.log("Inside Submit")
+      
+    
+        console.log("Key available")
+      let body = {
+        'Name' : product,
+        'Description' : description,
+        'Price' : price,
+        'Quantity' : quantity
+      }
+      //var requestOption = {method:'POST', body:body,headers:{Authorization: 'Bearer ' + key.token}}
+      let requestOption = {method:'POST',body:JSON.stringify(body),headers: {'Content-Type':'application/json'}}
 
+      //https://mile12db.azurewebsites.net
+      authFetch("https://mile12db.azurewebsites.net/api/products/C-9",requestOption ).then(response => {
+        return response.json()
+      }).then(response => {
+        console.log(response)
+      })
+      
+    } 
+    //e.preventDefault()
+
+    handleClose()
+  }
   const handleOpen = () => {
     setOpen(true);
   };

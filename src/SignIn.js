@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
-    paddingTop: "40px",
+    paddingTop: "0px",
   },
   paper: {
     margin: theme.spacing(8, 8),
@@ -79,8 +79,8 @@ export function SignIn() {
       else {
         console.log("Please type in correct username/password")
       }
-      // redirect to home
-      history.push('/home')
+      // redirect to welcome
+      history.push('/welcome')
 
   })
 
@@ -159,9 +159,6 @@ export function SignIn() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
                 </Grid>
                 <Grid item>
                   <Link href="/signUp" variant="body2">

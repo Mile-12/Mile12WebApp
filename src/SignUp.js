@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
-    paddingTop: "40px",
+    paddingTop: "0px",
   },
   paper: {
     margin: theme.spacing(8, 8),
@@ -153,7 +153,7 @@ export function SignUp({ loggedIn, logout, login }) {
                 color="primary"
                 className={classes.submit}
                 onClick={onSubmitClick}
-                href="/login"
+                href="/welcome"
               >
                 Sign Up
               </Button>

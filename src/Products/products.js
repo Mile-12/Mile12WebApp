@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     minWidth: 275,
+    marginLeft: 0,
   },
   root2: {
     minWidth: 275,
@@ -55,7 +56,7 @@ export default function Products() {
   
   const [values, setValue] = useState([])
     useEffect(() => {
-      authFetch("https://mile12db.azurewebsites.net/api/products").then(response => {
+      authFetch("https://mile12db.azurewebsites.net/api/products/C-1").then(response => {
         return response.json()
       }).then(response => {
           console.log(response)
@@ -74,9 +75,8 @@ export default function Products() {
     <Grid item xs={12} md={7} lg={11}>
       <SimpleModal />
       </Grid>
-      <Grid item xs={8} md={7} lg={11}>
+      <Grid item xs={12} md={7} lg={12}>
       {values.map(row => (
-    <div className={classes.root2}>
         <Card className={classes.root} variant="outlined">
                 <CardContent>
                 <Typography variant="h5" component="h2">
@@ -98,7 +98,6 @@ export default function Products() {
 
         </CardContent>
         </Card>
-    </div>
           ))}
         </Grid>
 

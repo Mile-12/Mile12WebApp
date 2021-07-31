@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Tools() {
 const [name, setName] = useState('');
 const [weight, setWeight] = useState('');
+const [price, setPrice ] = useState();
+
   const handleName = (e) => {
     setName(e.target.value)
   };
@@ -48,7 +50,10 @@ const [weight, setWeight] = useState('');
     axios.post("https://mile12db.azurewebsites.net/api/forecast/price" , body).then(response => {
       return response
     }).then(response => {
-      console.log("fish rec" + response)
+
+      console.log(response.data['price EURO'])
+      setPrice(response.data['price EURO'])
+
       
     })
   }
@@ -86,6 +91,7 @@ const [weight, setWeight] = useState('');
       </CardActionArea>
       <CardActionArea>
       </CardActionArea>
+      <h1> Price prediction: N{Math.round(price * 488.29)}</h1>
     </React.Fragment>
   );
 }
