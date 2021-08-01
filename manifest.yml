@@ -2,3 +2,4 @@ apps:
 - name: mile12
   random-route: true
   memory: 128M
+  command: yarn start
