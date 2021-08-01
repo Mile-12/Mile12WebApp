@@ -26,6 +26,7 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import Avatar from "@material-ui/core/Avatar";
 import TablePagination from "@material-ui/core/TablePagination";
+import axios from 'axios'
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -158,6 +159,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
 }));
+
 
 export default function People() {
   const classes = useStyles();

@@ -1,0 +1,7 @@
+
+---
+applications:
+- name: mile12
+  random-route: true
+  memory: 256M
+  path: build/

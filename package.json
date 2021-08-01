@@ -1,5 +1,5 @@
 {
-  "name": "material-dashboards",
+  "name": "mile12",
   "version": "0.1.2",
   "private": true,
   "dependencies": {
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
