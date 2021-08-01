@@ -84,14 +84,9 @@ export function Dashboard() {
           </Grid>
           {/* Recent TotalCard */}
           {/* Chart */}
-          <Grid item xs={12} md={8} lg={8}>
+          <Grid item xs={12} md={12} lg={12}>
             <Paper className={fixedHeightPaper}>
               <Chart />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={5} lg={4}>
-            <Paper className={fixedHeightPaper}>
-              <Tools />
             </Paper>
           </Grid>
           {/* ExpensesTable */}

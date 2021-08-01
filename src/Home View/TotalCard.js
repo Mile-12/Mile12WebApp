@@ -1,21 +1,10 @@
 import React, { useContext, useState, useEffect} from "react";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { DataContext } from "../Providers/DataProvider";
 import Title from "./Title";
-import { currentDay } from "../Providers/DataProvider";
-import { format } from "date-fns";
-import SimpleModal from "./Modal";
-import {Amount} from "./ExpensesTable";
 import { authFetch } from '../auth';
 
-function floor(i) { 
-  Number(i);
-}
-function preventDefault(event) {
-  event.preventDefault();
-}
+
 
 const useStyles = makeStyles({
   depositContext: {
@@ -44,11 +33,11 @@ export default function Deposits() {
   const classes = useStyles();
   //const { data } = useContext(Amount);
   //console.log(data)
-
+  const [loading, setLoading] = useState(false);
 
   const [values, setValue] = useState([])
   useEffect(() => {
-
+    setLoading(true)
     authFetch("https://mile12db.azurewebsites.net/api/expenses/C-1").then(response => {
       return response.json()
     }).then(response => {
@@ -58,17 +47,20 @@ export default function Deposits() {
         setValue(oldArray => [...oldArray, response[(i)].Amount])}
       }
         )
-
+        setLoading(false)
   }, [])
-  console.log("here" + values)
+  //console.log("here" + values)
   deposits = 0
   withdrawls =0
   for (let i = 0; i < values.length; i++) {
     if (Number(values[i]) > 0) deposits += Number(values[i]);
     if (Number(values[i]) < 0) withdrawls += Number(values[i]);
-    console.log(Number(values[i]))
+    //console.log(Number(values[i]))
 
 }
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
 
   return (
     <React.Fragment className = {classes.paper}>

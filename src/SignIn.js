@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
-    paddingTop: "0px",
+    paddingTop: "10px",
   },
   paper: {
     margin: theme.spacing(8, 8),

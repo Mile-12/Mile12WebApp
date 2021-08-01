@@ -30,7 +30,7 @@ export default function App() {
         <ThemeProvider theme={currentTheme}>
           <Provider store={store}>
             <DataProvider>
-              <Router>
+              <Router forceRefresh={false}>
                 <div>
                 <Route path="/login">
                       <SignIn />

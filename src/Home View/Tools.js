@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Title from "./Title";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { blue, green, pink } from "@material-ui/core/colors";
-
+import { useSelector, useDispatch } from "react-redux";
+import { add, remove, selectPeople, selectLoading } from "../ReduxTable/peopleSlice";
 const useStyles = makeStyles((theme) => ({
   depositContext: {
     flex: 1,
@@ -24,19 +25,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Tools() {
   const classes = useStyles();
+  const rows = useSelector(selectPeople);
 
   return (
     <React.Fragment>
-      <Title>So What</Title>
-      <CardActionArea>
-        About Profit
-      </CardActionArea>
-        About Loss
-      <CardActionArea>
-        Link to recommendations
-      </CardActionArea>
-      <CardActionArea>
-      </CardActionArea>
+      <Title>Types of members</Title>
+      <p1>{rows.label}</p1>
+
     </React.Fragment>
   );
 }

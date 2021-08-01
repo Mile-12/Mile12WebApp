@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Content from "./Content";
 import Tools from "./Tools";
 import Trips from "../Trips/Trips.js";
-
+import Upload from "./uploadImg";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
