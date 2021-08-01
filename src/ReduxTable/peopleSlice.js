@@ -10,7 +10,6 @@ export function nextID() {
 
 
 function getMemberData() {
-  const [memdata, setMemdata] = useState([]);
   const response = axios.get('https://mile12db.azurewebsites.net/api/coop/users/C-1').then(res => {
   let data = res.data.map(
       obj => {
@@ -22,14 +21,14 @@ function getMemberData() {
         }
       }
     );
-    setMemdata(data)
+    console.log(data);
     return data;
 
 
   })
   
 };
-let memdata = getMemberData();
+getMemberData();
 
 // let memdata = [
 //    this is just an initial example... we need to display the information of people that were added from the back end
@@ -41,8 +40,13 @@ console.log(getMemberData());
 export const peopleSlice = createSlice({
   name: "people",
   initialState: {
-    list: [],
-    loading: true,
+    list: [
+      {name: "Admin", phoneNumber: "9840954992", tag: "Leader", id: nextID()},
+{name: "Gedion", phoneNumber: "984092292", tag: "Member", id: nextID()},
+{name: "Nati", phoneNumber: "9840923992", tag: "Member", id: nextID()},
+{name: "Taire", phoneNumber: "98409ss992", tag: "Member", id: nextID()},
+    ],
+    loading: false,
   },
   reducers: {
     getuserData: (state, action) => {
